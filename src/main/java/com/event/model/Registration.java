@@ -3,36 +3,33 @@ package com.event.model;
 import com.event.util.RegistrationStatus;
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "Registration")
 @Table(name = "registration_details")
 public class Registration {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "registration_id")
     private int registrationId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "userId")
     private User registeredUser;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "eventId")
     private Event registeredEvent;
 
-    @Column(nullable = false)
+    @Column(name = "registration_status", nullable = false)
     @Enumerated(EnumType.STRING)
-    private RegistrationStatus registrationStatus;
+    private RegistrationStatus registrationStatus = RegistrationStatus.REGISTERED;
 
 
     public Registration(){
 
     }
 
-    public Registration(int registrationId, Event registeredEvent, User registeredUser, RegistrationStatus registrationEvent) {
-        this.registrationId = registrationId;
+    public Registration(Event registeredEvent, User registeredUser) {
         this.registeredEvent = registeredEvent;
         this.registeredUser = registeredUser;
-        this.registrationStatus = registrationEvent;
     }
 
     public int getRegistrationId() {

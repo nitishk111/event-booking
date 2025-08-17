@@ -16,7 +16,10 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="com.event.model.User"></mapping>
+        <mapping class="com.event.model.User" />
+        <mapping class="com.event.model.Event" />
+        <mapping class="com.event.model.Registration" />
+        <mapping class="com.event.model.Feedback" />
 
     </session-factory>
 </hibernate-configuration>

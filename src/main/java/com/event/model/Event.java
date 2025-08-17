@@ -4,32 +4,33 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "Entity")
 @Table(
         name="event_details",
         uniqueConstraints ={
-                @UniqueConstraint( columnNames = {"eventDate","eventLocation"})
+                @UniqueConstraint( columnNames = {"event_date","event_location"})
         }
 )
 public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="event_id")
     private int eventId;
 
-    @Column(nullable = false)
+    @Column(name="event_title" ,nullable = false)
     private String eventTitle;
 
-    @Column(nullable = false)
+    @Column(name="event_date",nullable = false)
     private LocalDate eventDate;
 
-    @Column(nullable = false)
+    @Column(name="event_location",nullable = false)
     private String eventLocation;
 
     public Event() {
     }
 
-    public Event(int eventId, String eventTitle, LocalDate eventDate, String eventLocation) {
+    public Event(String eventTitle, LocalDate eventDate, String eventLocation) {
         this.eventId = eventId;
         this.eventTitle = eventTitle;
         this.eventDate = eventDate;

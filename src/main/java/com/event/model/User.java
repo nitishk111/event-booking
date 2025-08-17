@@ -2,23 +2,29 @@ package com.event.model;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name="User")
 @Table(name = "user_detail")
+@NamedQueries(
+        @NamedQuery(
+                name="User.authenticate",
+                query="Select u from User u WHERE u.userEmail= :userEmail AND u.userPassword =: userPassword"
+        )
+)
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="user_id")
     private int userId;
 
-    @Column(nullable = false)
+    @Column(name="user_name", nullable = false)
     private String userName;
 
-    @Column(unique = true, nullable = false)
+    @Column(name="user_email",unique = true, nullable = false)
     private String userEmail;
 
-    @Column(nullable = false)
+    @Column(name="user_password",nullable = false)
     private String userPassword;
-
 
     public User(){
 

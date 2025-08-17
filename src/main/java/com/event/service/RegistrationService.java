@@ -1,13 +1,10 @@
-package com.event.dao;
+package com.event.service;
 
-import com.event.model.Event;
 import com.event.model.Registration;
-import com.event.model.User;
 
 import java.util.List;
 
-public interface RegistrationDAO {
-
+public interface RegistrationService {
     public String registerUser(Registration registration);
 
     public Registration findRegistrationById(int registrationId);
@@ -15,5 +12,6 @@ public interface RegistrationDAO {
 
     public String markAttendence(int registrationId);
 
-    public String deRegisterForEvent(Registration registration);
+
+    public String deRegisterForEvent(int registrationId);
 }

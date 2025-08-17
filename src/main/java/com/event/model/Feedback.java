@@ -9,23 +9,24 @@ public class Feedback {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "feedback_id")
     private int feedbackId;
 
     @OneToOne
+    @JoinColumn(name = "registration_id")
     private Registration feedbackRegistration;
 
-    @Column(nullable = false)
+    @Column(name ="feedback_rating", nullable = false)
     @Enumerated(EnumType.STRING)
     private FeedbackRating feedbackRating;
 
-    @Column(nullable = false)
+    @Column(name ="feedback_comment", nullable = false)
     private String feedbackComments;
 
     public Feedback(){
     }
 
-    public Feedback(int feedbackId, Registration feedbackRegistration, FeedbackRating feedbackRating, String feedbackComments) {
-        this.feedbackId = feedbackId;
+    public Feedback(Registration feedbackRegistration, FeedbackRating feedbackRating, String feedbackComments) {
         this.feedbackRegistration = feedbackRegistration;
         this.feedbackRating = feedbackRating;
         this.feedbackComments = feedbackComments;

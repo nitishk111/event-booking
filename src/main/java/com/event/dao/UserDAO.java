@@ -21,17 +21,15 @@ public interface UserDAO {
 
     public List<Event> findAllNonRegisteredEvents(int userId);
 
-    public boolean authenticateUser(String userEmail, String userPassword);
+    public User authenticateUser(String userEmail, String userPassword);
 
-    public String updateEmail(int userId, String userEmail);
-    public String updateName(int userId, String userName);
-    public String updatePassword(int userId, String userPassword);
+
+    public User updateUser(User user);
 
     public String changeFeedbackRating(int feedbackId, int feedbackRating);
     public String changeFeedbackComment(int feedbackId, String feedbackComment);
 
     public String deleteFeedback(int feedbackId);
 
-    public String deleteUser(int userId);
-
+    String deleteUser(User user);
 }

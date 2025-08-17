@@ -1,4 +1,4 @@
-package com.event.dao;
+package com.event.service;
 
 import com.event.model.Event;
 import com.event.model.Registration;
@@ -7,8 +7,7 @@ import com.event.model.User;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface EventDAO {
-
+public interface EventService {
     public String addEvent(Event event);
 
     public Event fingEventById(int eventId);
@@ -26,7 +25,13 @@ public interface EventDAO {
 
     public double findEventAvgRating(int eventId);
 
-    public Event updateEvent(Event event);
 
-    public String deleteEvent(Event event);
+    public Event updateEventTitle(int eventId, String eventTitle);
+
+    public Event updateEventDate(int eventId, LocalDate eventDate);
+
+    public Event updateEventLocation(int eventid, String eventLocation);
+
+
+    public String deleteEvent(int eventId);
 }
